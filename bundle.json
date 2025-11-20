@@ -1,0 +1,14 @@
+{
+  "bundle_id": "{{UUID}}",
+  "session_id": "{{UUID}}",
+  "created": "{{TIMESTAMP}}",
+  "files": [
+    "agents.md",
+    "rules.md",
+    "journal.md",
+    "todos.md",
+    "features.md",
+    "project_summary.md",
+    "srs.md"
+  ]
+}
