@@ -1,0 +1,29 @@
+# AI Agent Configuration File
+# This file contains configuration for AI agent document drop-off system
+
+# Default agent name (used when not specified)
+DEFAULT_AGENT_NAME=ai_agent
+
+# Base directory for agent documents
+AGENT_DOCS_DIR=ai_agents
+
+# Subdirectories for different document types
+JOURNAL_DIR=journals
+TODO_DIR=todos
+
+# Default commit message templates
+DEFAULT_JOURNAL_COMMIT_MSG=Add journal entry from {agent_name} - {timestamp}
+DEFAULT_TODO_COMMIT_MSG=Add todo list from {agent_name} - {timestamp}
+
+# Timestamp format for filenames (strftime format)
+TIMESTAMP_FORMAT=%Y%m%d_%H%M%S
+
+# Timestamp format for display (strftime format)
+DISPLAY_TIMESTAMP_FORMAT=%Y-%m-%d %H:%M:%S
+
+# Enable automatic git operations (true/false)
+AUTO_GIT_ENABLED=true
+
+# Git author configuration (optional, uses git config if not set)
+# GIT_AUTHOR_NAME=AI Agent
+# GIT_AUTHOR_EMAIL=ai-agent@example.com
