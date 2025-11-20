@@ -2,10 +2,18 @@
 
 This document defines the **standard bundle of files** that every AI agent receives.
 
+Each new agent is assigned a directory within the **`collection` submodule**. The collection submodule is a separate repository that contains all agent bundles, todo lists, and analyses.
+
+> **Note**: The `collection` folder is a git submodule. Ensure you initialize submodules when cloning:
+> ```bash
+> git clone --recursive https://github.com/cbwinslow/mkdocs.git
+> ```
+> See [SUBMODULE_SETUP.md](SUBMODULE_SETUP.md) for detailed instructions.
+
 Each new agent is assigned a directory:
 
 ```text
-agent_bundle_<BUNDLE_UUID>/
+collection/agent_bundle_<BUNDLE_UUID>/
 ├── agents.md
 ├── rules.md
 ├── journal.md
@@ -15,6 +23,8 @@ agent_bundle_<BUNDLE_UUID>/
 ├── srs.md
 └── (optional) bundle.json
 ```
+
+All agent bundles are stored in the `collection` submodule to keep agent data separate from the main codebase.
 
 Throughout these templates, replace:
 
@@ -517,4 +527,53 @@ Additional information, references, and design notes.
 
 These can be added in a later version of the standard without breaking the
 current bundle format.
+
+---
+
+## 10. Collection Submodule
+
+The `collection` folder is maintained as a **git submodule** pointing to a separate repository:
+- **Repository**: `https://github.com/cbwinslow/collection`
+- **Purpose**: Store all agent bundles, todo lists, and analyses separately from the main codebase
+
+### Benefits of Using a Submodule
+
+1. **Separation of Concerns**: Agent data is kept separate from application code
+2. **Independent Versioning**: The collection can be versioned independently
+3. **Flexible Access**: Different projects can reference the same collection
+4. **Scalability**: Large amounts of agent data don't bloat the main repository
+
+### Working with the Collection Submodule
+
+When creating new agent bundles:
+
+```bash
+# Navigate to the collection submodule
+cd collection
+
+# Create new agent bundle
+mkdir agent_bundle_<UUID>
+cd agent_bundle_<UUID>
+
+# Create bundle files using templates from this document
+# ... create agents.md, rules.md, journal.md, etc.
+
+# Commit to the collection repository
+git add .
+git commit -m "Add new agent bundle <UUID>"
+git push origin main
+
+# Update main repository to reference the new commit
+cd ../..
+git add collection
+git commit -m "Update collection submodule"
+git push
+```
+
+### Important Notes for Agents
+
+- **Always initialize submodules** when cloning the repository
+- **Commit changes to the collection submodule** separately from the main repository
+- **Update the main repository's submodule reference** after collection updates
+- See [SUBMODULE_SETUP.md](SUBMODULE_SETUP.md) for detailed setup and usage instructions
 

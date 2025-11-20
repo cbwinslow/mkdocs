@@ -1,6 +1,23 @@
 # langchain-cohere-qdrant-retrieval
 This is a template retrieval repo to create a Flask api server using LangChain that takes a PDF file and allows to search in 100+ languages with Cohere embeddings and Qdrant Vector Database.
 
+## Cloning the Repository
+
+This repository uses git submodules. Clone with submodules using:
+
+```bash
+git clone --recursive https://github.com/cbwinslow/mkdocs.git
+```
+
+Or if you've already cloned without `--recursive`:
+
+```bash
+git submodule init
+git submodule update
+```
+
+See [SUBMODULE_SETUP.md](SUBMODULE_SETUP.md) for detailed information about the collection submodule.
+
 ## Installation
 
 Install all the python dependencies using pip
